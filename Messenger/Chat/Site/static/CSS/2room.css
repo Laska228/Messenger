@@ -1,0 +1,398 @@
+body{
+
+/*    background: url(../Images/room_BG.jpg);*/
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgb(30,30,30);
+
+}
+
+.BG{
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#send{
+    box-sizing: border-box;
+    color: black;
+    width: 100px;
+}
+#send:hover {
+    width: 300px;
+}
+
+.messages_scrolling{
+}
+
+.reg{
+    font-family: "Roboto,-apple-system,apple color emoji,BlinkMacSystemFont,Segoe UI,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif";
+}
+
+.room_body {
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    width: 80%;
+    padding: 0 5px;
+    height: 84%;
+    margin-top: 2%;
+    overflow-y: scroll;
+}
+
+.room_body::-webkit-scrollbar {
+    width: 6px;
+
+}
+
+.room_body::-webkit-scrollbar-track {
+    background: none;
+}
+.room_body::-webkit-scrollbar-thumb {
+    background-color: rgba(100,100,100,0.7);
+    border-radius: 20px;
+}
+.room_body::-webkit-scrollbar-thumb:hover {
+    background: grey;
+}
+
+.room_body::-webkit-scrollbar-track:hover {
+    background: rgb(50, 50, 50);
+}
+
+
+
+.darker {
+    border-color: black;
+    background-color: #ddd;
+}
+
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.time-left {
+    font-size: 80%;
+    padding: 3px;
+    background: rgba(41,49,51);
+    border-radius: 5px;
+}
+
+
+input[type=text], select {
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.textarea{
+    box-sizing: border-box;
+    resize: vertical;
+    display: inline-block;
+    width: 92%;
+    max-height: 200px;
+    min-height: 40px;
+    height: 40px;
+    padding: 12px 20px;
+    margin: 8px 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+/*    margin-top: -100px;*/
+}
+
+#file_div{
+    position: absolute;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 2.3%;
+}
+
+
+#input_attach{
+    display: inline-block;
+    margin: -12px;
+    margin-top: -3px;
+    width: 60px;
+}
+
+input[type=file]{
+    position: absolute;
+    opacity: 0;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
+    margin-top: 8px;
+}
+
+.input_submit{
+    box-sizing: border-box;
+    position: absolute;
+
+    width: 70px;
+    background-color: rgba(10,10,10);
+    color: white;
+    padding: 14px 20px;
+    margin: 6px -30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: rgba(20,25,25);
+}
+
+.send_div{
+    overflow: hidden;
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    width: 79.5%;
+    padding: 0 5px;
+    border-radius: 5px;
+    background-color: rgba(41,49,51, 1);
+    padding: 10px;
+    box-shadow:0 0 10px white;
+    margin-top: 44%;
+    transition: right 1s;
+
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background: rgba(41,49,51);
+    transition: width 1s;
+}
+
+.send_div.active {
+  width: 57%;
+  transition: width 1s;
+}
+
+.room_div {
+    border-radius: 5px;
+    background-color: rgba(20,20,20, 0.7);
+    padding: 5px;
+    width: 100%;
+    transition: width 1s;
+}
+
+
+.new{
+    display: inline-block;
+}
+
+
+
+
+
+
+.HEAD{
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+}
+
+
+
+
+
+.container_home{
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid black;
+    background-color: rgba(41,49,51, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: -10px;
+    width: 90%;
+    height: 100%;
+    max-height: 56em;
+    overflow-y: scroll;
+}
+
+
+
+.container_home::-webkit-scrollbar {
+    width: 6px;
+}
+
+.container_home::-webkit-scrollbar-track {
+    background: none;
+}
+.container_home::-webkit-scrollbar-thumb {
+    background-col
+}
+
+
+
+
+
+
+
+.mes_img {
+    width: 500px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mes_img:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.attachment_photo{
+    width: 200px;
+}
+
+
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #4CAF50;
+    background-color: #C8E6C9;
+}
+
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+
+.tab button:hover {
+    background-color: #FFEB3B;
+}
+
+
+.tab button.active {
+    background-color: #4CAF50;
+  color: #fff;
+}
+
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #4CAF50;
+    border-top: none;
+}
+
+
+.menu_mobile {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  top: 0;
+  z-index: 1;
+  transition: left 1s 1s;
+}
+
+.menu_mobile.active {
+  left: 0;
+  transition: left 1s;
+}
+
+.close-menu {
+  transform: scale(0);
+  transition: transform 1s;
+}
+
+.close-menu-active {
+  transform: scale(1);
+  transition: transform 1s 1s;
+}

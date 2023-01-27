@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- templates/home.html -->
+    <h1>Django Image Uploading</h1>
+<!--    <ul>-->
+<!--      {% for post in object_list %}-->
+<!--        <h2>{{ post.title }}</h2>-->
+<!--        <img src="{{ post.cover}}" alt="{{ post.title }}">-->
+<!--      {% endfor %}-->
+
+<!--    </ul>-->
+    <input type="file" id="fileInput">
+<script>
+
+        const fileInput = document.getElementById("fileInput");
+        fileInput.addEventListener("change", e => {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", () => {
+                console.log(reader.result);
+            });
+
+            reader.readAsDataURL(file);
+        });
+</script>
+</body>
+</html>

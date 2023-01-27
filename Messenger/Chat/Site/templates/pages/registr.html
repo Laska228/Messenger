@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Registration{% endblock %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'CSS/base.css' %}"/>
+    <h2 class="offset reg" align="center">Create your account</h2>
+    <form class="offset" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+        <a class="first" title="Google" class="socialaccount_provider google" href="/accounts/google/login/?process=login">Google</a>
+        <button class="first" type="submit">Send</button>
+    </form>
+
+{% endblock %}

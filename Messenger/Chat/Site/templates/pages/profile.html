@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+{% block content %}
+    <link rel="stylesheet" href="{% static 'CSS/base.css' %}"/>
+    <form class="offset">
+        <h2 class="reg">Profile</h2>
+        <button class="first" type="submit">Save</button>
+    </form>
+
+                <div id="okno">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Delete User Account</legend>
+                                <p>Are you sure you want to delete your account?  This will permanently delete your
+                                   profile and any content you have generated.</p>
+                                {{ form }}
+                        </fieldset>
+                        <form action="#">
+                            <p><h2><input type="submit"  class="close" value="Close"></h2>
+                        </form>
+
+                        <form method="POST" action="delete_account">
+                            {% csrf_token %}
+                            <p><h2><input type="submit" value="Delete" ></h2></p>
+                        </form>
+                </div>
+
+
+
+                <div align="center" >
+                    <h2 id="TITLE">Messenger</h2>
+                    {% csrf_token %}
+                    <form  method="post" action="logout">
+                        {% csrf_token %}
+                        <p><h2><input type="submit" class="HELPERS" value="LogOut" ></h2></p>
+                    </form>
+                </div>
+
+                <form action="#okno" align="center">
+                    <input type="submit" class="HELPERS" value="Delete Account">
+                </form>
+
+
+
+{% endblock %}
+</body>
+</html>

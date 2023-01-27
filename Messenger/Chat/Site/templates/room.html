@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'CSS/room.css' %}"/>
+        <script src="https://unpkg.com/swup@3.0.2/dist/Swup.umd.js"></script>
+
+<!--            <meta charset="utf-8">-->
+<!--    <title>Custom Right Click Context Menu | CodingNepal</title>-->
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    &lt;!&ndash; Iconscout Link For Icons &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">-->
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+<!--        <p style='background-image: url({% static 'Images/room_BG_2.jpg' %})'>-->
+<!--        <div id="search_list">-->
+<!--            <input type="texd" id="SEARCH" aria-hidden="Search">-->
+<!--              <div id="opencontent" class="open-content">-->
+<!--                {%for value in all_chats%}-->
+<!--                    {% csrf_token %}-->
+<!--                    <p><img class="picture" src="{% static 'Images/default_avatar.jpg' %}" alt="avatar">-->
+<!--                        <input class="users" type="submit" name="users" value="        {{value}}"></p>-->
+<!--                    {% endfor %}-->
+<!--              </div>-->
+<!--        </div>-->
+
+        <div class = 'new'>
+            <form class="container_home" method="POST" action="checkview_users">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {%for value in all_users%}
+                    {% csrf_token %}
+                        <p><img class="avatar_profile" src="{{ value.image.url }}"><input class="users" type="submit" name="users" value="        {{value}}"></p>
+                {% endfor %}
+            </form>
+            <form class="container_home" method="POST" action="checkview">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {%for value in all_chats%}
+                    {% csrf_token %}
+                    <p><input class="users" name="chats" type="submit" value="{{value.id}}"></p>
+                {% endfor %}
+            </form>
+        </div>
+
+
+
+<!--//-->
+
+            <div>
+                {% csrf_token %}
+                <input type="submit" id="name" value="{{users}}">
+            </div>
+
+
+            <div class="attachments">
+                <input type="submit" class="close-menu" value="X">
+                    <div class="tab">
+                        <button class="tablinks" onclick="openCity(event, 'attachment_photos')">Photos</button>
+                        <button class="tablinks" onclick="openCity(event, 'attachment_videos')">Videos</button>
+                        <button class="tablinks" onclick="openCity(event, 'attachment_files')">Files</button>
+                        <button class="tablinks" onclick="openCity(event, 'attachment_music')">Music</button>
+                        <button class="tablinks" onclick="openCity(event, 'attachment_links')">Links</button>
+                    </div>
+
+                    <div id="attachment_photos" class="tabcontent">
+                    </div>
+                    <div id="attachment_videos" class="tabcontent">
+                    </div>
+                    <div id="attachment_files" class="tabcontent">
+                    </div>
+                    <div id="attachment_music" class="tabcontent">
+                    </div>
+                    <div id="attachment_links" class="tabcontent">
+                    </div>
+
+
+            </div>
+
+            <div class="room_body transition-fade" id="swup">
+
+                <div class="offset room_div" id="display">
+                </div>
+
+                <div class="send_div">
+                    <form id="post-form" enctype="multipart/form-data" action="send">
+                        {% csrf_token %}
+                        <div id="file_div"><input type="file" multiple name="file" id="file" download><img id="input_attach" src="{% static 'Images/input_attach3x-transformed.png' %}"></div>
+                        <input type="hidden" name="username" id="username" value="{{username}}"/>
+                        <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+                        <input type="hidden" name="room" id="room" value="{{room_details.name}}"/>
+                        <textarea type="text" name="message" class="textarea" id="message" width="100px"></textarea>
+                        <input type="submit" class="input_submit" value="Send">
+                    </form>
+                </div>
+            </div>
+
+
+
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <div class="wrapper">
+      <div class="content">
+        <ul class="menu">
+          <li class="item">
+            <i class="uil uil-eye"></i>
+            <span>Preview</span>
+          </li>
+          <li class="item share">
+            <div>
+              <i class="uil uil-share"></i>
+              <span>Share</span>
+            </div>
+            <i class="uil uil-angle-right"></i>
+            <ul class="share-menu">
+              <li class="item">
+                <i class="uil uil-twitter-alt"></i>
+                <span>Twitter</span>
+              </li>
+              <li class="item">
+                <i class="uil uil-instagram"></i>
+                <span>Instagram</span>
+              </li>
+              <li class="item">
+                <i class="uil uil-dribbble"></i>
+                <span>Dribble</span>
+              </li>
+              <li class="item">
+                <i class="uil uil-telegram-alt"></i>
+                <span>Telegram</span>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <i class="uil uil-link-alt"></i>
+            <span>Get Link</span>
+          </li>
+          <li class="item">
+            <i class="uil uil-copy"></i>
+            <span class="tooltip" onclick="saveText()" onmouseout="outFunc()">
+
+                  <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                  Copy text
+
+            </span>
+          </li>
+          <li class="item">
+            <i class="uil uil-trash-alt"></i>
+            <span>Delete</span>
+          </li>
+        </ul>
+        <div class="setting">
+          <li class="item">
+            <i class="uil uil-setting"></i>
+            <span>Settings</span>
+          </li>
+        </div>
+      </div>
+    </div>
+
+
+    </body>
+        <script src="{% static 'JS/room.js' %}"></script>
+</html>

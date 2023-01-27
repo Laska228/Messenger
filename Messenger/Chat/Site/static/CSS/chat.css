@@ -1,0 +1,15 @@
+.offset{
+    margin-left: 25em;
+    margin-right: auto;
+    vertical-align: middle;
+    width: 12em;
+}
+
+#name{
+    text-align: center;
+}
+
+#message{
+    width: 900px;
+}
+

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'CSS/room.css' %}"/>
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+
+
+    <div class='HEAD'>
+
+    </div>
+            <div class = 'new'>
+        <div class = 'new'>
+                <form class="container_home" method="POST" action="checkview_users">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {%for value in all_users%}
+                        {% csrf_token %}
+                            <p><img class="avatar_profile" src="{{ value.image.url }}"><input class="users" type="submit" name="users" value="        {{value}}"></p>
+                    {% endfor %}
+
+                </form>
+                <form class="container_home" method="POST" action="checkview">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {%for value in all_chats%}
+                        {% csrf_token %}
+                        <p><input class="users" name="chats" type="submit" value="{{value.id}}"></p>
+                    {% endfor %}
+                </form>
+            </div>
+
+         <div class="home_body">
+            Select a chat to start messaging
+         </div>
+    </body>
+
+
+
+
+
+
+</html>

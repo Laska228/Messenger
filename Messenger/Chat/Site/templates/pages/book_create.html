@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- Устанавливаем multipart/form-data -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Выводим каждое поле формы в отдельном параграфе -->
+        {{ form.as_p }}
+        <button type="submit">Загрузка</button>
+    </form>
+
+    <!-- Выводим уже созданные записи -->
+    {% for b in books %}
+    <p>{{ b.title }}</p>
+    <img src="{{ b.cover.url }}" width="100px">
+    <!-- Выводим размер картинки -->
+    <p>Оригинальный размер картинки  {{ b.cover.width }}x{{ b.cover.height }}</p>
+    <br/>
+    <a href="{{ b.book }}">Книга</a>
+    {% endfor %}
+</body>
+</html>
